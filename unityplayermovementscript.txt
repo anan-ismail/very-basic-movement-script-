@@ -1,0 +1,46 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class playerMovement : MonoBehaviour
+{
+    public Rigidbody Rb;
+    public float forwardMovement = 1000f;
+    public float backwardsMovement = -1000f;
+    public float leftMovement = -500f;
+    public float rightMovement = 500f;
+
+    public float counterMovementforward = -450f;
+    public float counterMovementbackwards = -450f;
+    public float counterMovementleft = 170f;
+    public float counterMovementright = 170f;
+
+
+   void FixedUpdate()
+    {
+        if (Input.GetKey("w"))
+        {
+            Rb.AddForce(0, 0, forwardMovement * Time.deltaTime);
+            Rb.AddForce(0, 0, counterMovementforward * Time.deltaTime);
+            Debug.Log("You pressed W");
+        }
+        if (Input.GetKey("s"))
+        {
+            Rb.AddForce(0, 0, backwardsMovement * Time.deltaTime);
+            Rb.AddForce(0, 0, counterMovementbackwards * Time.deltaTime);
+            Debug.Log("You pressed S");
+        }
+        if (Input.GetKey("a"))
+        {
+            Rb.AddForce(leftMovement * Time.deltaTime, 0, 0);
+            Rb.AddForce(counterMovementleft * Time.deltaTime, 0, 0);
+            Debug.Log("You pressed A");
+        }
+        if (Input.GetKey("d"))
+        {
+            Rb.AddForce(rightMovement * Time.deltaTime, 0, 0);
+            Rb.AddForce(counterMovementleft * Time.deltaTime, 0, 0);
+            Debug.Log("You pressed D");
+        }
+    }
+}
